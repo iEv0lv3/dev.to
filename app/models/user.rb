@@ -1,3 +1,4 @@
+# establishes the data within the user class, including name, username, articles
 class User < ApplicationRecord
   self.ignored_columns = ["organization_id"]
 
