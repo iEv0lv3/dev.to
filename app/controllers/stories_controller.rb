@@ -16,10 +16,11 @@ class StoriesController < ApplicationController
 
   rescue_from ArgumentError, with: :bad_request
 
+  # this method runs when the route ends with a username
   def index
     @page = (params[:page] || 1).to_i
     @article_index = true
-
+    # then this method runs if the route includes the username
     return handle_user_or_organization_or_podcast_or_page_index if params[:username]
     return handle_tag_index if params[:tag]
 
@@ -95,6 +96,7 @@ class StoriesController < ApplicationController
     not_found
   end
 
+  # this method handles the username route
   def handle_user_or_organization_or_podcast_or_page_index
     @podcast = Podcast.available.find_by(slug: params[:username].downcase)
     @organization = Organization.find_by(slug: params[:username].downcase)
@@ -106,6 +108,7 @@ class StoriesController < ApplicationController
     elsif @page
       handle_page_display
     else
+      # This runs if the route is a user name
       handle_user_index
     end
   end
@@ -192,6 +195,7 @@ class StoriesController < ApplicationController
     return if performed?
 
     set_surrogate_key_header "articles-user-#{@user.id}"
+    # renders the template users/show
     render template: "users/show"
   end
 
