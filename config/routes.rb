@@ -411,6 +411,7 @@ Rails.application.routes.draw do
       :constraints => { view: /comments|moderate|admin/ }
   get "/:username/:slug" => "stories#show"
   get "/:username" => "stories#index"
+  # runs the index method within the stories controller
 
   root "stories#index"
 end
