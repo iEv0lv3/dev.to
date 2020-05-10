@@ -1,6 +1,8 @@
 class Internal::UsersController < Internal::ApplicationController
   layout "internal"
 
+  # create methods here to expose the necessary data points via instance variables
+
   def index
     @users = case params[:state]
              when /role\-/
