@@ -1,8 +1,10 @@
 <% title @user.name %>
-
+<%# renders the title %>
 <%= content_for :page_meta do %>
   <%= render "users/meta" %>
 <% end %>
+
+<%# renders the main user profile area %>
 
 <% cache "main-user-profile-header-area-#{@user.id}-#{@user.profile_updated_at}", expires_in: 10.days do %>
   <style>
@@ -24,18 +26,22 @@
     }
     <% end %>
   </style>
+  <%# This renders the box that shows all of the user's details %>
   <div class="user-profile-header" style="<%= user_colors_style(@user) %>" itemscope itemtype="http://schema.org/Person" itemprop="mainEntity">
     <meta itemprop="url" content="https://dev.to/<%= @user.username %>">
     <div class="user-profile-header-container">
       <div class="profile-pic-wrapper">
         <img class="profile-pic" src="<%= ProfileImage.new(@user).get(width: 320) %>" itemprop="image" alt="<%= @user.username %> profile" style="border-color:<%= user_colors(@user)[:bg] %>;background:<%= user_colors(@user)[:bg] %>" />
       </div>
+      <%# profile-details is the box that contains the user's name, edit profile, bio, and badges %>
       <div class="profile-details">
         <h1>
+        <%# this renders the user's name as an h1 %>
           <span itemprop="name"><%= @user.name %><%= render "shared/pro_checkmark", style: nil, width: nil %></span>
           <span class="user-profile-follow-button-wrapper">
             <button id="user-follow-butt" class="cta follow-action-button user-profile-follow-button" style="color:<%= user_colors(@user)[:text] %>;background-color:<%= user_colors(@user)[:bg] %>" data-info='{"id":<%= @user.id %>,"className":"<%= @user.class.name %>"}'>&nbsp;</button>
           </span>
+          <%# if a user is signed in, they see the option to follow the user %>
           <% if user_signed_in? %>
             <span class="user-profile-chat-button-wrapper">
               <a href="/connect/@<%= @user.username %>" id="user-connect-redirect" style="display:none">
@@ -44,6 +50,7 @@
             </span>
           <% end %>
         </h1>
+        <%# this is the user's bio. if no bio is found, "bio not found" is rendered %>
         <p class="profile-description" itemprop="description">
           <%= @user.summary.presence || ["404 bio not found"].sample %>
         </p>
@@ -55,6 +62,7 @@
             fill: white;
           }
         </style>
+        <%# these are all of the user's social badges, which are rendered if the social accounts exist %>
         <p class="social">
           <% if @user.twitter_username? %>
             <a href="https://twitter.com/<%= @user.twitter_username %>" target="_blank" rel="noopener me">
@@ -127,7 +135,10 @@
           <% end %>
         </p>
       </div>
+          <%# render stats dashboard here using javascript pack tag. Add the pack tag in the app/javascript/packs folder. Then add the dashboard component folder in the app/javascript folder, including the component as well as the test folder %>
+
     </div>
+    <%# this is a hidden modal for sending a message via the chat %>
     <div class="modal" style="display: none">
       <div class="overlay"></div>
       <div class="modal-content " id="new-message-modal">
@@ -145,6 +156,7 @@
         </p>
       </div>
     </div>
+    <%# This is the functionality to block a user. It includes a pack tag for mounting a compononent %>
     <%= render "articles/user_metadata", context: "profile" %>
     <div class="profile-dropdown" data-username="<%= @user.username %>">
       <button id="user-profile-dropdown">
@@ -152,6 +164,7 @@
       </button>
       <div id="user-profile-dropdownmenu" class="profile-dropdownmenu">
         <button id="user-profile-dropdownmenu-block-button" data-profile-user-id="<%= @user.id %>" class="block-button" type="button">Block @<%= @user.username %></button>
+        <%# The user's profile id is passed using the data-profile attribute %>
         <% if user_signed_in? %>
           <%= javascript_pack_tag "profileDropdown", defer: true %>
         <% end %>
@@ -169,7 +182,7 @@
     }
   </style>
 <% end %>
-
+<%# This is the section that shows the user's stories %>
 <div class="home sub-home" id="index-container"
      data-params="<%= params.to_json(only: %i[tag username q]) %>" data-which="<%= @list_of %>"
      data-algolia-tag="<%= "user_#{@user.id}" %>"
@@ -185,6 +198,7 @@
         <img style="height:28px;width:28px;" src="<%= asset_path "ribbon.svg" %>" alt="right-sidebar-nav">
       </button>
     </div>
+    <%# This renders the list of the user's stories %>
     <div class="substories" id="substories">
       <% if params[:view] == "comments" %>
         <%= render "users/comments_section" %>
