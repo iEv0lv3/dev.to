@@ -21,11 +21,13 @@ class Internal::UsersController < Internal::ApplicationController
     @user = User.find(params[:id])
   end
 
+  # find and show a user
   def show
     @user = User.find(params[:id])
     @organizations = @user.organizations
   end
 
+  # update a user's credentials
   def update
     @user = User.find(params[:id])
     manage_credits
