@@ -22,6 +22,8 @@ class Internal::UsersController < Internal::ApplicationController
   end
 
   def show
+    # This action is where data needs to be passed to the view. I will create a facade and
+    # model methods in order to keep this controller skinny.
     @user = User.find(params[:id])
     @organizations = @user.organizations
   end

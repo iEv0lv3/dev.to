@@ -219,6 +219,39 @@ class User < ApplicationRecord
     end
   end
 
+  # Add user model methods for our track
+  # def total_visits
+    
+  # end
+
+  # def daily_visits
+
+  # end
+
+  # def daily_active_time
+
+  # end
+
+  # def acticles_read
+
+  # end
+
+  # def total_words
+
+  # end
+
+  # def daily_average_words
+
+  # end
+
+  # def daily_average_articles
+
+  # end
+
+  # def total_comments
+
+  # end
+
   def estimated_default_language
     language_settings["estimated_default_language"]
   end
