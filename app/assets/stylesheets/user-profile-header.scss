@@ -526,4 +526,19 @@
       }
     }
   }
+  .stats {
+    background-color: lightgrey;
+    width: 170px;
+    height: 80px;
+  }
+  .icons {
+    width: 30px;
+    height: 30px;
+  }
+  .display-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
 }
