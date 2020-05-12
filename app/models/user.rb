@@ -229,6 +229,60 @@ class User < ApplicationRecord
     (sign_in_count.to_f / days_since_created).round(2)
   end
 
+  def daily_time_active
+    page_views = User.select("users.id, page_views.time_tracked_in_seconds").
+      joins(:page_views).
+      where("page_views.user_id = #{id}").
+      pluck(:time_tracked_in_seconds)
+
+    (page_views.sum.to_f / days_since_created).round(2)
+  end
+
+  def articles_read
+    articles = User.select("users.id, page_views.counts_for_number_of_views").
+      joins(:page_views).
+      where("page_views.user_id = #{id}").
+      pluck(:counts_for_number_of_views)
+
+    articles.sum
+  end
+
+  def daily_articles_read
+    articles = User.select("users.id, page_views.counts_for_number_of_views").
+      joins(:page_views).
+      where("page_views.user_id = #{id}").
+      pluck(:counts_for_number_of_views)
+
+    (articles.sum.to_f / days_since_created).round(2)
+  end
+
+  def words_read
+    words = Article.select("articles.processed_html").
+      joins(:page_views).
+      where("page_views.user_id = #{id}").
+      pluck(:processed_html)
+
+    word_count(words)
+  end
+
+  def daily_words_read
+    words = Article.select("articles.processed_html").
+      joins(:page_views).
+      where("page_views.user_id = #{id}").
+      pluck(:processed_html)
+
+    (word_count(words).to_f / days_since_created).round(2)
+  end
+
+  def word_count(processed_html)
+    return 0 if processed_html.empty?
+
+    processed_html.reduce(0) do |total, html|
+      total += html.length
+      total
+    end
+  end
+
   def estimated_default_language
     language_settings["estimated_default_language"]
   end
