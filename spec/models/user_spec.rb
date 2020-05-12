@@ -941,4 +941,20 @@ RSpec.describe User, type: :model do
       expect(user.receives_follower_email_notifications?).to be(true)
     end
   end
+
+  describe "user statistics methods" do
+    let(:user) { build(:user) }
+
+    it "daily_visits" do
+      user.sign_in_count = 75
+      user.created_at = DateTime.new(2020, 5, 1)
+      user.save!
+
+      expect(user.daily_visits.class).to eq(Float)
+    end
+
+    it "daily_time_active" do
+      described_class.joins(:page_views).select(:time_tracked_in_seconds).where("user.id = page_views.user_id")
+    end
+  end
 end

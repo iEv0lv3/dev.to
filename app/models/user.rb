@@ -219,6 +219,16 @@ class User < ApplicationRecord
     end
   end
 
+  def days_since_created
+    today = Date.current
+    created = created_at.to_date
+    (today - created).to_i
+  end
+
+  def daily_visits
+    (sign_in_count.to_f / days_since_created).round(2)
+  end
+
   def estimated_default_language
     language_settings["estimated_default_language"]
   end
