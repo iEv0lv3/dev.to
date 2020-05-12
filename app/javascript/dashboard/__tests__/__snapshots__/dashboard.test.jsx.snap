@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dashboard /> renders properly 1`] = `
+<div
+  class="display-div"
+>
+  <div
+    class="user-visits stats"
+  >
+    <div
+      class="title"
+    >
+      VISITS
+    </div>
+    <div
+      class="stat-row"
+    >
+      <img
+        class="icons"
+        src=""
+      />
+      <div
+        class="stats-group"
+      >
+        <div
+          class="stat-display stat-total"
+        >
+          <div
+            class="display-big"
+          >
+            1
+          </div>
+           total
+        </div>
+        <div
+          class="stat-display"
+        >
+          <div
+            class="display-big"
+          >
+            2
+          </div>
+           avg/day
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="comments stats"
+  >
+    <div
+      class="title"
+    >
+      COMMENTS
+    </div>
+    <div
+      class="stat-row"
+    >
+      <img
+        class="icons"
+        src=""
+      />
+      <div
+        class="stat-display"
+      >
+        <div
+          class="display-big"
+        >
+          3
+        </div>
+         total
+      </div>
+    </div>
+  </div>
+  <div
+    class="time stats"
+  >
+    <div
+      class="title"
+    >
+      TIME SPENT
+    </div>
+    <div
+      class="stat-row"
+    >
+      <img
+        class="icons"
+        src=""
+      />
+      <div
+        class="stat-display"
+      >
+        <div
+          class="display-big"
+        >
+          4
+        </div>
+         min/day
+      </div>
+    </div>
+  </div>
+  <div
+    class="articles"
+  >
+    <div
+      class="stats double"
+    >
+      <div
+        class="title"
+      >
+        ARTICLES READ
+      </div>
+      <div
+        class="stat-row"
+      >
+        <img
+          class="icons article-icon"
+          src=""
+        />
+        <div
+          class="stat-display stat-total"
+        >
+          <div
+            class="display-big"
+          >
+            5
+          </div>
+           total
+        </div>
+        <div
+          class="stat-display"
+        >
+          <div
+            class="display-big"
+          >
+            6
+          </div>
+           avg/day
+        </div>
+      </div>
+    </div>
+    <div
+      class="divider"
+    />
+    <div
+      class="stats double"
+    >
+      <div
+        class="title"
+      >
+        WORDS READ
+      </div>
+      <div
+        class="stat-row"
+      >
+        <div
+          class="stat-display stat-total"
+        >
+          <div
+            class="display-big"
+          >
+            7
+          </div>
+           total
+        </div>
+        <div
+          class="stat-display"
+        >
+          <div
+            class="display-big"
+          >
+            8
+          </div>
+           avg/day
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
