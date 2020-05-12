@@ -51,6 +51,12 @@
           .profile-details .social .icon-img path {
             fill: <%= HexComparer.new([user_colors(@user)[:bg], user_colors(@user)[:text]]).brightness(0.78) %> !important;
           }
+          .user-visits {
+            background: red
+          }
+          .comments {
+            background: blue
+          }
           .night-theme .profile-details .social .icon-img path {
             fill: white;
           }
@@ -158,6 +164,8 @@
         <a href="/report-abuse?url=https://dev.to/<%= @user.username %>">Report Abuse</a>
       </div>
     </div>
+    <div id="dashboard" data-visits="<%= @user.sign_in_count %>" data-comments="<%= @user.comments_count %>"></div>
+    <%= javascript_pack_tag "dashboard", defer: true %>
   </div>
 <% end %>
 
