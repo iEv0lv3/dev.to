@@ -11,31 +11,36 @@ export class Dashboard extends Component {
   }
 
   render() {
-    /* eslint-disable */ const { visits, comments } = this.props;
-
+    /* eslint-disable */ const { visits, visit, comments, time, articles, avgArticles, words, avgWords } = this.props;
+console.log(avgArticles)
     return (
       <div className="display-div">
         <div className="user-visits stats">
-          VISITS
+          <div className="title">VISITS</div>
           <img className="icons" src={displayClick}></img>
           {visits} total
+          {visit} avg/day
         </div>
         <div className="comments stats">
-          COMMENTS
+          <div className="title">COMMENTS</div>
           <img className="icons" src={displayComment}></img>
           {comments} total
         </div>
         <div className="time stats">
-          TIME SPENT
-          {/* {comments} */}
+          <div className="title">TIME SPENT</div>
           <img className="icons" src={displayTime}></img>
+          {time} per day
         </div>
-        <div className="articles stats">
-          <div>
+        <div className="articles">
+          <div className="border">
             ARTICLES READ
-            <img className="icons" src={displayRead}></img>
+            <img className="icons article-icon" src={displayRead}></img>
+            {articles} total
+            {avgArticles} avg/day
           </div>
-          <div>WORDS READ</div>
+            WORDS READ
+            {words} total
+            {avgWords} avg/day
         </div>
       </div>
     );

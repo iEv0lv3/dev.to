@@ -1,9 +1,9 @@
 <% title @user.name %>
-
+​
 <%= content_for :page_meta do %>
   <%= render "users/meta" %>
 <% end %>
-
+​
 <% cache "main-user-profile-header-area-#{@user.id}-#{@user.profile_updated_at}", expires_in: 10.days do %>
   <style>
     .widget header {
@@ -158,11 +158,11 @@
         <a href="/report-abuse?url=https://dev.to/<%= @user.username %>">Report Abuse</a>
       </div>
     </div>
-    <div id="dashboard" data-visits="<%= @user.sign_in_count %>" data-comments="<%= @user.comments_count %>"></div>
+     <div id="dashboard" data-visits="<%= @user.sign_in_count %>" data-visit="<%=  @user.daily_visits %>" data-comments="<%= @user.comments_count %>" data-time="<%= @user.daily_time_active %>" data-articles="<%= @user.articles_read %>" data-avgarticles="<%= @user.daily_articles_read %>" data-words="<%= @user.words_read %>" data-avgwords="<%= @user.daily_words_read %>"></div> # rubocop:disable 80-character-limits
     <%= javascript_pack_tag "dashboard", defer: true %>
   </div>
 <% end %>
-
+​
 <% if @user.currently_streaming_on_twitch? %>
   <style>
     #icon-twitch path {
@@ -171,7 +171,7 @@
     }
   </style>
 <% end %>
-
+​
 <div class="home sub-home" id="index-container"
      data-params="<%= params.to_json(only: %i[tag username q]) %>" data-which="<%= @list_of %>"
      data-algolia-tag="<%= "user_#{@user.id}" %>"
@@ -202,6 +202,6 @@
     <%= render "users/sidebar_additional" %>
   <% end %>
 </div>
-
+​
 <%= render "stories/narrow_nav_menu" %>
 <%= render "stories/stories_list_script" %>

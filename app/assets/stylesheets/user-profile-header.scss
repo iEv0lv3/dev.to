@@ -528,12 +528,32 @@
   }
   .stats {
     background-color: lightgrey;
-    width: 170px;
-    height: 80px;
+    width: 130px;
+    height: 70px;
+    padding: 10px;
+  }
+  .articles {
+    background-color: lightgrey;
+    width: 300px;
+    height: 70px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+  .border {
+    border-right: 1px solid black;
+    margin-right: 10px;
+  }
+  .title {
+    padding-bottom: 10px;
   }
   .icons {
     width: 30px;
     height: 30px;
+    padding-right: 10px;
+  }
+  .article-icon {
+    padding-top: 10px;
   }
   .display-div {
     display: flex;
