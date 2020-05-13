@@ -3,7 +3,7 @@ import { Dashboard } from '../dashboard/dashboard';
 
 function loadElement() {
   const root = document.getElementById('dashboard');
-  console.log(root.dataset.avgArticles)
+  
   if (root) {
     render(
       <Dashboard
