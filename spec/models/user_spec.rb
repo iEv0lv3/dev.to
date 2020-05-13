@@ -941,4 +941,64 @@ RSpec.describe User, type: :model do
       expect(user.receives_follower_email_notifications?).to be(true)
     end
   end
+
+  describe "user statistics methods" do
+    let(:user1) { build(:user) }
+
+    it "daily_visits" do
+      user1.sign_in_count = 75
+      user1.created_at = DateTime.new(2020, 5, 1)
+      user1.save!
+
+      expect(user1.daily_visits.class).to eq(Float)
+    end
+
+    it "daily_time_active" do
+      user1.created_at = DateTime.new(2020, 5, 1)
+      user1.save!
+      create_list(:page_view, 3, user: user1)
+
+      expect(user1.daily_time_active.class).to eq(Float)
+    end
+
+    it "articles_read" do
+      user1.created_at = DateTime.new(2020, 5, 1)
+      user1.save!
+      create_list(:page_view, 3, user: user1)
+
+      expect(user1.articles_read.class).to eq(Integer)
+    end
+
+    it "daily_articles_read" do
+      user1.created_at = DateTime.new(2020, 5, 1)
+      user1.save!
+      create_list(:page_view, 3, user: user1)
+
+      expect(user1.daily_articles_read.class).to eq(Float)
+    end
+
+    it "words_read" do
+      user1.created_at = DateTime.new(2020, 5, 1)
+      user1.save!
+      create_list(:page_view, 3, user: user1)
+
+      expect(user1.words_read.class).to eq(Integer)
+    end
+
+    it "daily_words_read" do
+      user1.created_at = DateTime.new(2020, 5, 1)
+      user1.save!
+      create_list(:page_view, 3, user: user1)
+
+      expect(user1.daily_words_read.class).to eq(Float)
+    end
+
+    it "word_count" do
+      user1.created_at = DateTime.new(2020, 5, 1)
+      user1.save!
+
+      expect(user1.word_count([])).to eq(0)
+      expect(user1.word_count(["This is an amazing string."])).to eq(26)
+    end
+  end
 end
