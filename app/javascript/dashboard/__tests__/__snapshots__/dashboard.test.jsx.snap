@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dashboard /> renders properly 1`] = `
+<div
+  class="display-div"
+>
+  <div
+    class="user-visits stats"
+  >
+    <div
+      class="title"
+    >
+      VISITS
+    </div>
+    <img
+      class="icons"
+      src=""
+    />
+    1 total2 avg/day
+  </div>
+  <div
+    class="comments stats"
+  >
+    <div
+      class="title"
+    >
+      COMMENTS
+    </div>
+    <img
+      class="icons"
+      src=""
+    />
+    3 total
+  </div>
+  <div
+    class="time stats"
+  >
+    <div
+      class="title"
+    >
+      TIME SPENT
+    </div>
+    <img
+      class="icons"
+      src=""
+    />
+    4 per day
+  </div>
+  <div
+    class="articles"
+  >
+    <div
+      class="border"
+    >
+      ARTICLES READ
+      <img
+        class="icons article-icon"
+        src=""
+      />
+      5 total6 avg/day
+    </div>
+    WORDS READ7 total8 avg/day
+  </div>
+</div>
+`;
