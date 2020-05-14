@@ -4,7 +4,6 @@ import displayClick from '../../assets/images/display_click.png';
 import displayTime from '../../assets/images/display_time.png';
 import displayComment from '../../assets/images/display_comment.png';
 
-
 export class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -12,8 +11,16 @@ export class Dashboard extends Component {
   }
 
   render() {
-    /* eslint-disable */ const { visits, visit, comments, time, articles, avgArticles, words, avgWords } = this.props;
-console.log(avgArticles)
+    /* eslint-disable */ const {
+      visits,
+      visit,
+      comments,
+      time,
+      articles,
+      avgArticles,
+      words,
+      avgWords,
+    } = this.props;
     return (
       <div className="display-div">
         <div className="user-visits stats">
@@ -39,9 +46,9 @@ console.log(avgArticles)
             {articles} total
             {avgArticles} avg/day
           </div>
-            WORDS READ
-            {words} total
-            {avgWords} avg/day
+          WORDS READ
+          {words} total
+          {avgWords} avg/day
         </div>
       </div>
     );
