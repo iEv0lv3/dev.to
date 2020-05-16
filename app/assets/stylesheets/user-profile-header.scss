@@ -526,4 +526,106 @@
       }
     }
   }
+  .stats {
+    background-color: lightgrey;
+    flex: 0 1 auto;
+    margin-right: 1em;
+    padding: 1em;
+    flex-direction: column;
+  }
+
+  .stats-group {
+    display: flex;
+  }
+
+  .stat-row {
+    display: flex;
+    // justify-content: space-between;
+    // width: 100%;
+  }
+  .articles {
+    background-color: lightgrey;
+
+    display: flex;
+  }
+  .border {
+    border-right: 1px solid black;
+    margin-right: 10px;
+  }
+  .title {
+    padding-bottom: 5px;
+    // flex: 0 0 100%;
+    white-space: nowrap;
+  }
+  .icons {
+    width: 40px;
+    height: 33px;
+    padding-right: 10px;
+    margin-top: 0.2em;
+  }
+
+  .display-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 1em 0;
+  }
+  .user-visits {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .stat-display {
+    font-size: 0.7em;
+    text-align: center;
+  }
+
+  .display-big {
+    font-size: 2.7em;
+    line-height: 90%;
+  }
+
+  .stat-total {
+    margin-right: 1.3em;
+  }
+
+  .double {
+    margin-right: 0;
+  }
+
+  .divider {
+    border-right: 1px solid black;
+    margin: 1em 0;
+  }
+
+  @media screen and (max-width: 950px) {
+    .user-visits,
+    .comments,
+    .time {
+      flex: 0 0 20%;
+      margin-bottom: 1em;
+    }
+    .display-div {
+      flex-wrap: wrap;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .user-visits {
+      flex: 1 1 100%;
+      margin-bottom: 1em;
+      flex-direction: column;
+    }
+    .comments,
+    .time {
+      flex: 1 1 30%;
+    }
+    .display-div {
+      margin-left: 1em;
+    }
+
+    .articles {
+      flex: 1 1 100%;
+      margin-right: 1em;
+    }
+  }
 }
